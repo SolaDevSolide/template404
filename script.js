@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const content = document.querySelector('.content')
     const slider = document.querySelector('.slider');
     let slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
@@ -10,11 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function setSlidesWidth() {
-        const containerWidth = slider.offsetWidth;
+        const containerWidth = content.offsetWidth;
+        console.log(containerWidth);
         const margin = 10; // Margin between slides
         const visibleSlides = getVisibleSlides();
         const totalMargin = margin * 2 * (visibleSlides);
-        const slideWidth = (containerWidth - totalMargin) / visibleSlides;
+        const slideWidth = Math.floor((containerWidth - totalMargin) / visibleSlides);
 
         slides.forEach(slide => {
             slide.style.width = `${slideWidth}px`;
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function adjustSliderPosition() {
         const slideWidth = slides[0].offsetWidth;
         const slideMargin = 10 * 2; // Margin for each slide
-        const totalSlideWidth = slideWidth + slideMargin; // Total width including margin
+        const totalSlideWidth = Math.floor(slideWidth + slideMargin); // Total width including margin
         slider.style.transform = `translateX(-${currentSlide * totalSlideWidth}px)`;
     }
 
@@ -42,8 +44,21 @@ document.addEventListener("DOMContentLoaded", function() {
         slides = document.querySelectorAll('.slide'); // Update the slides NodeList
     }
 
+    function updateSlideVisibility() {
+        console.log("ouio")
+        slides.forEach((slide, index) => {
+            if (index >= currentSlide && index < currentSlide + getVisibleSlides()) {
+                console.log("vissible")
+                slide.classList.remove('hidden');
+                slide.classList.add('visible');
+            } else {
+                slide.classList.remove('visible');
+                slide.classList.add('hidden');
+            }
+        });
+    }
+
     function nextSlide() {
-        const visibleSlides = getVisibleSlides();
         currentSlide++;
 
         if ((currentSlide + 1) % initalSlideCount == 0) {
@@ -56,11 +71,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         adjustSliderPosition();
+        updateSlideVisibility(); // Update visibility of slides
     }
 
     window.addEventListener('resize', () => {
         setSlidesWidth();
         isCloningRequired = true; // Reset flag to clone again if needed
+        updateSlideVisibility();
     });
 
     if (isCloningRequired) {
@@ -68,5 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
         isCloningRequired = false;
     }
     setSlidesWidth();
-    setInterval(nextSlide, 3000);
+    updateSlideVisibility();
+    setInterval(nextSlide, 5000);
 });

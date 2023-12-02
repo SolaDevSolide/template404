@@ -17,11 +17,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url('assets/Background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background: url('assets/Background.png') center / cover no-repeat fixed;
     font-family: 'Arial', sans-serif;
     color: var(--white);
 }
@@ -50,26 +46,16 @@ header {
     border-bottom: 3px solid var(--secondary);
 }
 
-
 h1 {
     margin: 0;
     font-size: 2.5em;
     text-shadow: 2px 2px 4px rgba(var(--dim-rgb), 1);
 }
 
-/* .description {
-    background-color: var(--secondary);
-    padding: 15px;
-    margin-top: 20px;
-    font-size: 1.2em;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px var(--black);
-} */
-
 .description {
     font-size: 1.2em;
     line-height: 1.6;
-    background-color: rgba(var(--dim-rgb), 0.8); /* Using 'dim' color with transparency */
+    background-color: rgba(var(--dim-rgb), 0.8);
     color: var(--white);
     padding: 20px;
     border: 2px dashed var(--secondary);
@@ -78,11 +64,17 @@ h1 {
 }
 
 .description:hover {
-    background-color: rgba(var(--dim-rgb), 0.9); /* Slightly less transparent on hover */
-    border-color: var(--primary); /* Change border color to primary */
+    background-color: rgba(var(--dim-rgb), 0.9);
+    border-color: var(--primary); /* Change border color */
+    border-style: solid; /* Change border style */
 }
 
-
+.content {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
 
 .content img {
     width: 100%;
@@ -91,28 +83,8 @@ h1 {
     transition: transform 0.3s ease;
 }
 
-.content img:hover {
+.content img:hover, .slide img:hover {
     transform: scale(1.05);
-}
-
-footer {
-    background-color: var(--dim);
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 4px var(--black);
-}
-
-.social-link {
-    color: var(--white);
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-link:hover {
-    color: var(--primary);
 }
 
 @media only screen and (max-width: 768px) {
@@ -147,47 +119,25 @@ footer {
     to { opacity: 0; }
 }
 
-.content {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: 800px; /* Adjust height as needed */
-}
-
-.content {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: auto; /* Adjust to fit content */
-}
-
-/* .slider {
-    display: flex;
-    transition: transform 1s ease;
-    width: fit-content;
-    margin: auto;
-}
-
-.slide {
-    height: auto;
-    object-fit: cover;
-}
-
-.slide img {
-    transition: transform 0.3s ease;
-} */
-
 .slider {
     display: flex;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
-
 .slide {
-    flex: 0 0 auto; /* This ensures that each slide is only as wide as its content */
-    margin-left: 10px;
+    flex: 0 0 auto;
     margin-right: 10px;
-    transition: width 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.slide.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.slide.hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
 }
 
 .slide img {
@@ -195,12 +145,6 @@ footer {
     height: auto;
     object-fit: cover;
     display: block;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-
-.slide img:hover {
-    transform: scale(1.1);
 }
 
 .slider.transitioning .slide img {
@@ -208,34 +152,29 @@ footer {
 }
 
 
-footer {
-    background: rgba(var(--black-rgb), 0.9);
-    color: var(--white);
+.social-media-links {
+    display: inline-block;
+    background-color: rgba(var(--dim-rgb), 0.8);
+    padding: 10px 20px; /* Adjust padding as needed */
     text-align: center;
-    padding: 10px 0;
-    border-top: 3px solid rgba(var(--dim-rgb), 1);
+    border-radius: 5px; /* Optional: Adds rounded corners */
 }
 
+.social-media-links:hover {
+    background-color: rgba(var(--dim-rgb), 0.9);
+}
 
 .social-link {
-    color: var(--white);
     margin: 0 10px;
+    color: var(--white); /* White text color for contrast */
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    font-size: 20px;
+}
+
+.social-link:hover {
+    color: var(--primary); /* Change color to primary on hover */
 }
 
 .social-link i {
-    transition: transform 0.3s ease;
-}
-
-.social-link:hover, .social-link:hover i {
-    color: var(--primary);
-    transform: translateY(-3px); /* Slight upward move */
-}
-
-.social-link:hover i {
-    transform: scale(1.2); /* Icon grows slightly */
+    margin-right: 8px;
 }
