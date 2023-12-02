@@ -1,0 +1,241 @@
+:root {
+    --primary: #f5a11a;
+    --secondary: #f67020;
+    --dim: #321e00;
+    --black: #000000;
+    --white: #ffffff;
+
+    /* RGB values of the colors */
+    --primary-rgb: 245, 161, 26;
+    --secondary-rgb: 246, 112, 32;
+    --dim-rgb: 50, 30, 0;
+    --black-rgb: 0, 0, 0;
+    --white-rgb: 255, 255, 255;
+}   
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('assets/Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Arial', sans-serif;
+    color: var(--white);
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+header {
+    background: rgba(var(--primary-rgb), 0.9);
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 3px solid var(--secondary);
+}
+
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(var(--dim-rgb), 1);
+}
+
+/* .description {
+    background-color: var(--secondary);
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--black);
+} */
+
+.description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    background-color: rgba(var(--dim-rgb), 0.8); /* Using 'dim' color with transparency */
+    color: var(--white);
+    padding: 20px;
+    border: 2px dashed var(--secondary);
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.description:hover {
+    background-color: rgba(var(--dim-rgb), 0.9); /* Slightly less transparent on hover */
+    border-color: var(--primary); /* Change border color to primary */
+}
+
+
+
+.content img {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.content img:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: var(--dim);
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px var(--black);
+}
+
+.social-link {
+    color: var(--white);
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary);
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .logo {
+        width: 80px;
+    }
+
+    .content img {
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    header, .description, footer {
+        padding: 10px;
+    }
+}
+
+/* Fade-out animation */
+.content img.fade-out {
+    animation: fade-out 0.5s;
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.content {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 800px; /* Adjust height as needed */
+}
+
+.content {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: auto; /* Adjust to fit content */
+}
+
+/* .slider {
+    display: flex;
+    transition: transform 1s ease;
+    width: fit-content;
+    margin: auto;
+}
+
+.slide {
+    height: auto;
+    object-fit: cover;
+}
+
+.slide img {
+    transition: transform 0.3s ease;
+} */
+
+.slider {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.slide {
+    flex: 0 0 auto; /* This ensures that each slide is only as wide as its content */
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+
+.slide img:hover {
+    transform: scale(1.1);
+}
+
+.slider.transitioning .slide img {
+    transition: none;
+}
+
+
+footer {
+    background: rgba(var(--black-rgb), 0.9);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 0;
+    border-top: 3px solid rgba(var(--dim-rgb), 1);
+}
+
+
+.social-link {
+    color: var(--white);
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.social-link i {
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover, .social-link:hover i {
+    color: var(--primary);
+    transform: translateY(-3px); /* Slight upward move */
+}
+
+.social-link:hover i {
+    transform: scale(1.2); /* Icon grows slightly */
+}
