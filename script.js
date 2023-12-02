@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
             slide.style.marginLeft = `${margin}px`;
         });
 
-        // slides[slides.length - 1].style.marginRight = '0'; // Remove margin from the last slide
-
         adjustSliderPosition();
     }
 
