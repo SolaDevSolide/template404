@@ -24,6 +24,7 @@ This guide will help you customize the "La 404 Devinci" web template to fit your
   - Within the `<div class="slider">` in `index.html`, find each `<img>` tag.
   - Replace the `src` attributes with the paths to your new images.
   - You can add or remove `<img>` tags as needed for more or fewer images.
+  - Do not forget to change the images file extension (.png and .jpg for example).
 
 ### Social Media Links
 
