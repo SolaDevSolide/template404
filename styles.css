@@ -11,6 +11,11 @@
     --dim-rgb: 50, 30, 0;
     --black-rgb: 0, 0, 0;
     --white-rgb: 255, 255, 255;
+
+    --font-size-desktop: 1.2em;
+    --font-size-mobile: 1em;
+    --padding-desktop: 20px;
+    --padding-mobile: 15px;
 }   
 
 body, html {
@@ -53,20 +58,32 @@ h1 {
 }
 
 .description {
-    font-size: 1.2em;
+    font-size: var(--font-size-desktop);
     line-height: 1.6;
     background-color: rgba(var(--dim-rgb), 0.8);
     color: var(--white);
-    padding: 20px;
+    padding: var(--padding-desktop);
     border: 2px dashed var(--secondary);
     margin: 20px 0;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease; /* Enhanced duration */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transform: rotate(0deg); /* Initial rotation state */
 }
 
 .description:hover {
     background-color: rgba(var(--dim-rgb), 0.9);
-    border-color: var(--primary); /* Change border color */
-    border-style: solid; /* Change border style */
+    border-color: var(--primary);
+    border-style: solid;
+    transform: scale(1.05) rotate(0.5deg); /* Slight rotation on hover */
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 600px) {
+    .description {
+        font-size: var(--font-size-mobile);
+        padding: var(--padding-mobile);
+        /* Additional mobile-specific styles can go here */
+    }
 }
 
 .content {
@@ -153,26 +170,22 @@ h1 {
 
 
 .social-media-links {
-    display: inline-block;
-    background-color: rgba(var(--dim-rgb), 0.8);
+    display: inline-block; /* Aligns the size of the box to its content */
+    background-color: var(--dim);
     padding: 10px 20px; /* Adjust padding as needed */
     text-align: center;
     border-radius: 5px; /* Optional: Adds rounded corners */
 }
 
-.social-media-links:hover {
-    background-color: rgba(var(--dim-rgb), 0.9);
-}
-
 .social-link {
     margin: 0 10px;
-    color: var(--white); /* White text color for contrast */
+    color: var(--white);
     text-decoration: none;
     font-size: 20px;
 }
 
 .social-link:hover {
-    color: var(--primary); /* Change color to primary on hover */
+    color: var(--primary);
 }
 
 .social-link i {

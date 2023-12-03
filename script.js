@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function setSlidesWidth() {
         const containerWidth = content.offsetWidth;
-        console.log(containerWidth);
         const margin = 10; // Margin between slides
         const visibleSlides = getVisibleSlides();
         const totalMargin = margin * 2 * (visibleSlides);
@@ -43,10 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateSlideVisibility() {
-        console.log("ouio")
         slides.forEach((slide, index) => {
             if (index >= currentSlide && index < currentSlide + getVisibleSlides()) {
-                console.log("vissible")
                 slide.classList.remove('hidden');
                 slide.classList.add('visible');
             } else {
